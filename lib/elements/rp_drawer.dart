@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import '../responsive_view.dart';
+import 'navigation_class.dart';
 
 class RPDrawer extends StatelessWidget {
   const RPDrawer({super.key});
@@ -6,7 +10,6 @@ class RPDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      // padding: EdgeInsets.zero,
       children: <Widget>[
         const DrawerHeader(
           decoration: BoxDecoration(
@@ -17,27 +20,17 @@ class RPDrawer extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 24),
           ),
         ),
-        ListTile(
-          leading: const Icon(Icons.home),
-          title: const Text('Home'),
-          onTap: () {
-            // Navigate to home page
-          },
-        ),
-        ListTile(
-          leading: const Icon(Icons.settings),
-          title: const Text('Settings'),
-          onTap: () {
-            // Navigate to settings page
-          },
-        ),
-        ListTile(
-          leading: const Icon(Icons.info),
-          title: const Text('About'),
-          onTap: () {
-            // Navigate to about page
-          },
-        ),
+        for(Navigation nav in navigationList)
+          ListTile(
+            leading: Icon(nav.icon),
+            title: Text(nav.name),
+            onTap: () {
+              if(!RP.isWeb(context)) {
+                Navigator.pop(context);
+              }
+              context.read<NavigationBloc>().add(NavigateTo(nav));
+            },
+          ),
         const Divider(),
         ListTile(
           leading: const Icon(Icons.exit_to_app),

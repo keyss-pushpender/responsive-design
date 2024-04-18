@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import 'navigation_class.dart';
 
-class RPAppBar extends StatelessWidget implements PreferredSizeWidget{
+class RPAppBar extends StatelessWidget implements PreferredSizeWidget {
   const RPAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text('home page'),
+      title: BlocBuilder<NavigationBloc, Navigation>(
+        builder: (BuildContext context, navigation) => Text(navigation.name),
+      ),
     );
   }
 
