@@ -8,7 +8,7 @@ class RPBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NavigationBloc, Navigation>(builder: (BuildContext context, navigation) {
+    return BlocBuilder<SideNavigationBloc, SideNavigation>(builder: (BuildContext context, navigation) {
       return Center(child: navigation.child);
     });
   }

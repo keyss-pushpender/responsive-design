@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import 'package:responsive_design/constants.dart';
 import '../responsive_view.dart';
 import 'navigation_class.dart';
 
@@ -13,22 +14,22 @@ class RPDrawer extends StatelessWidget {
       children: <Widget>[
         const DrawerHeader(
           decoration: BoxDecoration(
-            color: Colors.blue,
+            color: Colors.cyan,
           ),
           child: Text(
             'Drawer Header',
             style: TextStyle(color: Colors.white, fontSize: 24),
           ),
         ),
-        for(Navigation nav in navigationList)
+        for(SideNavigation nav in navigationList)
           ListTile(
             leading: Icon(nav.icon),
             title: Text(nav.name),
             onTap: () {
-              if(!RP.isWeb(context)) {
+              if(RP.isSizeLessThan(context, tabBreakPoint)) {
                 Navigator.pop(context);
               }
-              context.read<NavigationBloc>().add(NavigateTo(nav));
+              context.read<SideNavigationBloc>().add(NavigateTo(nav));
             },
           ),
         const Divider(),

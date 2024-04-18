@@ -4,16 +4,16 @@ import 'package:responsive_design/pages/home.dart';
 import 'package:responsive_design/pages/setting.dart';
 import '../pages/profile.dart';
 
-class Navigation {
+class SideNavigation {
   String name;
   IconData icon;
   Widget child;
-  Navigation(this.name, this.icon, this.child);
+  SideNavigation(this.name, this.icon, this.child);
 }
 
-List<Navigation> navigationList = [
-  Navigation('Home', Icons.home, const Home()),
-  Navigation('Settings', Icons.settings, const Setting()),
-  Navigation('About', Icons.info, const About()),
-  Navigation('Profile', Icons.person, const Profile()),
+List<SideNavigation> navigationList = [
+  SideNavigation('Home', Icons.home, const Home()),
+  SideNavigation('Settings', Icons.settings, const Setting()),
+  SideNavigation('About', Icons.info, const About()),
+  SideNavigation('Profile', Icons.person, const Profile()),
 ];

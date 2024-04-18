@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NavigationBloc(),
+      create: (context) => SideNavigationBloc(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'RP',

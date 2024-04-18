@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import 'package:responsive_design/constants.dart';
+import 'package:responsive_design/utils.dart';
+import '../responsive_view.dart';
 import 'navigation_class.dart';
 
 class RPAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -9,9 +12,18 @@ class RPAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: BlocBuilder<NavigationBloc, Navigation>(
+      elevation: 3.0,
+      backgroundColor: Colors.cyanAccent,
+      title: BlocBuilder<SideNavigationBloc, SideNavigation>(
         builder: (BuildContext context, navigation) => Text(navigation.name),
       ),
+      actions: [
+        if (RP.isSizeGreaterThan(context, tabBreakPoint)) ...[
+          IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+          IconButton(onPressed: () {}, icon: const Icon(Icons.person)),
+          hGap(),
+        ],
+      ],
     );
   }
 

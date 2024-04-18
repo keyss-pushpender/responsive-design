@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_design/elements/rp_app_bar.dart';
 import 'package:responsive_design/elements/rp_body.dart';
+import 'package:responsive_design/elements/rp_bottom_navigation.dart';
 import 'package:responsive_design/elements/rp_drawer.dart';
 
 class TabLayout extends StatelessWidget {
@@ -10,9 +11,8 @@ class TabLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: RPAppBar(),
-      drawer: Drawer(
-        child: RPDrawer(),
-      ),
+      drawer: Drawer(child: RPDrawer()),
+      bottomNavigationBar: BottomNavigation(),
       body: RPBody(),
     );
   }
