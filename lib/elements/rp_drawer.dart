@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import 'package:responsive_design/BLoCs/navigation/navigation_bloc.dart';
 import 'package:responsive_design/constants.dart';
 import '../responsive_view.dart';
 import 'navigation_class.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:responsive_design/BLoCs/navigation_bloc.dart';
+import 'package:responsive_design/BLoCs/navigation/navigation_bloc.dart';
+import 'package:responsive_design/BLoCs/searchBarCubit/search_cubit.dart';
 import 'layout/base_layout.dart';
 
 void main() {
@@ -12,8 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SideNavigationBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => SideNavigationBloc()),
+        BlocProvider(create: (context) => SearchCubit()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'RP',
@@ -21,7 +25,7 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const Base(),
+        home: const CommonBase(),
       ),
     );
   }

@@ -9,6 +9,7 @@ class RP {
       MediaQuery.of(context).size.width < webBreakPoint;
       // MediaQuery.of(context).size.width < tabBreakPoint;
   static bool isWeb(BuildContext context) => MediaQuery.of(context).size.width >= webBreakPoint;
+  static bool isMobileOrTab(BuildContext context) => MediaQuery.of(context).size.width < tabBreakPoint;
   static bool isSizeLessThan(BuildContext context, double size) =>
       MediaQuery.of(context).size.width < size;
   static bool isSizeLessThanEqualsTo(BuildContext context, double size) =>
