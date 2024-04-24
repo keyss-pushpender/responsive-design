@@ -9,6 +9,38 @@ import '../elements/rp_bottom_navigation.dart';
 import '../elements/rp_drawer.dart';
 import 'mobile_layout.dart';
 
+// ---------- COMMON BASE WITH SEPARATE SCAFFOLD AND DRAWER ----------
+class MainBase extends StatelessWidget {
+  const MainBase({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Row(
+        children: [
+          if (!RP.isMobileOrTab(context))
+            Container(
+                constraints: const BoxConstraints(maxWidth: 200.0, minWidth: 100.0),
+                child: const RPDrawer()),
+          Expanded(
+            child: Scaffold(
+              appBar: const RPAppBar(),
+              drawer: RP.isMobileOrTab(context)
+                  ? const Drawer(child: RPDrawer())
+                  : null,
+              bottomNavigationBar: RP.isMobileOrTab(context)
+                  ? const BottomNavigation()
+                  : null,
+              body: const Center(child: RPBody())
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+// ---------- COMMON BASE WITH TOP PARENT SCAFFOLD ----------
 class CommonBase extends StatelessWidget {
   const CommonBase({super.key});
 
@@ -44,6 +76,8 @@ class CommonBase extends StatelessWidget {
   }
 }
 
+
+// ---------- TOP TREE DISTRIBUTION ----------
 class Base extends StatelessWidget {
   const Base({super.key});
 
@@ -61,6 +95,7 @@ class Base extends StatelessWidget {
   }
 }
 
+// ---------- EXPERIMENT WITH CUSTOM SINGLE CHILD LAYOUT ----------
 class TestBase extends StatelessWidget {
   const TestBase({super.key});
 
